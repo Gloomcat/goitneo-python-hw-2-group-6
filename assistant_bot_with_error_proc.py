@@ -23,11 +23,16 @@ def input_error(func):
     return inner
 
 
-@input_error
 def parse_input(user_input):
     cmd, *args = user_input.split()
     cmd = cmd.strip().lower()
     return cmd, *args
+
+
+def show_all(contacts):
+    if not contacts:
+        return "Contacts book is empty.", False
+    return "Saved contacts:", True
 
 
 @input_error
@@ -51,12 +56,6 @@ def change_contact(args, contacts):
 def show_contact(args, contacts):
     username = args[0]
     return contacts[username]
-
-
-def show_all(contacts):
-    if not contacts:
-        return "Contacts book is empty.", False
-    return "Saved contacts:", True
 
 
 def main():
